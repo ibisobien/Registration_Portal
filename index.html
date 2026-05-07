@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Data Analysis Training — Ibiso Bien Michael</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0e1a;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 0;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .flyer {
+    width: 680px;
+    background: #0a0e1a;
+    border: 1px solid #1e2a3a;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #020b18 0%, #0f2035 50%, #071525 100%);
+    padding: 2.6rem 3rem 2.2rem;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #1e3a55;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(34,211,238,0.08) 0%, transparent 70%);
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 30%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(165,180,252,0.06) 0%, transparent 70%);
+  }
+
+  .top-badges {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1.3rem;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+  }
+
+  .badge-enrol {
+    background: linear-gradient(90deg, #22d3ee22, #a5b4fc22);
+    border: 1px solid #22d3ee55;
+    color: #22d3ee;
+  }
+
+  .badge-online {
+    background: linear-gradient(90deg, #4ade8022, #22d3ee22);
+    border: 1px solid #4ade8066;
+    color: #4ade80;
+  }
+
+  .badge-online svg, .badge-enrol svg {
+    width: 12px; height: 12px;
+    fill: currentColor;
+    flex-shrink: 0;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.7rem;
+    font-weight: 900;
+    color: #f0f4ff;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+
+  .header h1 span {
+    background: linear-gradient(90deg, #22d3ee, #a5b4fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .header-sub {
+    color: #7899b8;
+    font-size: 0.93rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .meta-pill {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: #ffffff0a;
+    border: 1px solid #ffffff12;
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    color: #a8c4d8;
+  }
+
+  .meta-pill svg {
+    width: 13px; height: 13px;
+    stroke: #22d3ee;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+  }
+
+  /* ONLINE BANNER */
+  .online-banner {
+    background: linear-gradient(90deg, #061a2e, #071f1a, #061a2e);
+    border-top: 1px solid #0d3a55;
+    border-bottom: 1px solid #0d3a2f;
+    padding: 0.85rem 3rem;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .online-dots {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+  .dot1 { background: #22d3ee; box-shadow: 0 0 6px #22d3ee88; }
+  .dot2 { background: #4ade80; box-shadow: 0 0 6px #4ade8088; }
+  .dot3 { background: #a5b4fc; box-shadow: 0 0 6px #a5b4fc88; }
+
+  .online-text {
+    font-size: 0.85rem;
+    color: #7ab8d0;
+  }
+
+  .online-text strong {
+    color: #4ade80;
+    font-weight: 600;
+  }
+
+  /* EARLY BIRD */
+  .early-bird {
+    background: linear-gradient(90deg, #0e3a2b, #0d2f45);
+    border-bottom: 1px solid #1d5c3f;
+    padding: 0.85rem 3rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .early-bird-icon {
+    width: 30px; height: 30px;
+    background: linear-gradient(135deg, #22d3ee, #4ade80);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .early-bird-icon svg {
+    width: 14px; height: 14px;
+    fill: #020617;
+  }
+
+  .early-bird-text strong {
+    display: block;
+    color: #4ade80;
+    font-size: 0.86rem;
+    font-weight: 600;
+  }
+
+  .early-bird-text span {
+    color: #6aad88;
+    font-size: 0.75rem;
+  }
+
+  /* PACKAGES */
+  .packages-section {
+    padding: 2.2rem 3rem;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #4a6a85;
+    margin-bottom: 1.1rem;
+  }
+
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .package-card {
+    background: #0f1a2a;
+    border: 1px solid #1a2d42;
+    border-radius: 14px;
+    padding: 1.2rem 1.1rem;
+    position: relative;
+  }
+
+  .package-card.featured {
+    border-color: #22d3ee33;
+    background: linear-gradient(145deg, #0f2035, #0a1a2e);
+  }
+
+  .package-icon {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .package-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #c8dff0;
+    margin-bottom: 0.25rem;
+  }
+
+  .package-tool {
+    font-size: 0.68rem;
+    color: #4a6a85;
+    margin-bottom: 0.9rem;
+  }
+
+  .price-original {
+    font-size: 0.68rem;
+    color: #3d5a72;
+    text-decoration: line-through;
+    line-height: 1;
+    display: block;
+  }
+
+  .price-main {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #22d3ee;
+    line-height: 1.1;
+    display: block;
+  }
+
+  .price-main.python-price { color: #a5b4fc; }
+
+  .price-note {
+    font-size: 0.62rem;
+    color: #4a6a85;
+    margin-top: 2px;
+    display: block;
+  }
+
+  .duration-badge {
+    position: absolute;
+    top: 9px; right: 9px;
+    background: #1a3050;
+    border-radius: 5px;
+    padding: 2px 7px;
+    font-size: 0.6rem;
+    color: #5a8aaa;
+    font-weight: 500;
+  }
+
+  .packages-row2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  /* CERTIFICATION */
+  .cert-section {
+    margin: 0 3rem;
+    background: linear-gradient(135deg, #12203a, #0e1a2f);
+    border: 1px solid #1e3a55;
+    border-radius: 14px;
+    padding: 1.2rem 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .cert-icon-wrap {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, #22d3ee22, #a5b4fc22);
+    border: 1px solid #22d3ee44;
+    border-radius: 11px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .cert-icon-wrap svg {
+    width: 22px; height: 22px;
+    stroke: #22d3ee;
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .cert-text strong {
+    display: block;
+    color: #c8dff0;
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+
+  .cert-text span {
+    color: #4a6a85;
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .cert-price-tag {
+    margin-left: auto;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .cert-price-tag .amt {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #a5b4fc;
+    display: block;
+  }
+
+  .cert-price-tag .lbl {
+    font-size: 0.68rem;
+    color: #4a6a85;
+  }
+
+  /* INSTRUCTOR */
+  .instructor-section {
+    margin: 0 3rem 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.5rem;
+    background: #0d1825;
+    border: 1px solid #1a2d42;
+    border-radius: 14px;
+  }
+
+  .instructor-avatar {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: 2px solid #22d3ee55;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #1a3a5c, #0d2035);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: #22d3ee;
+    font-weight: 700;
+  }
+
+  .instructor-info strong {
+    display: block;
+    color: #c8dff0;
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
+  .instructor-info span {
+    color: #4a6a85;
+    font-size: 0.75rem;
+  }
+
+  .instructor-creds {
+    margin-left: auto;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .cred-chip {
+    background: #12203a;
+    border: 1px solid #1e3a55;
+    border-radius: 5px;
+    padding: 3px 8px;
+    font-size: 0.62rem;
+    color: #5a8aaa;
+    font-weight: 500;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 1.6rem 3rem 2rem;
+    text-align: center;
+    background: linear-gradient(180deg, transparent, #0a1520);
+  }
+
+  .cta-label {
+    color: #4a6a85;
+    font-size: 0.76rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(90deg, #22d3ee, #a5b4fc);
+    color: #020617;
+    font-weight: 700;
+    font-size: 0.88rem;
+    padding: 0.85rem 2.2rem;
+    border-radius: 999px;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .cta-button svg {
+    width: 15px; height: 15px;
+    fill: #020617;
+    flex-shrink: 0;
+  }
+
+  .cta-url {
+    font-size: 0.72rem;
+    color: #3a5a72;
+    margin-top: 0.75rem;
+    letter-spacing: 0.3px;
+  }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid #111f2d;
+    padding: 1.1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #22d3ee;
+  }
+
+  .footer-contacts {
+    display: flex;
+    gap: 1.2rem;
+  }
+
+  .footer-contact-item {
+    font-size: 0.7rem;
+    color: #3a5a72;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .footer-contact-item svg {
+    width: 11px; height: 11px;
+    stroke: #22d3ee66;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+</style>
+</head>
+<body>
+<div class="flyer">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="top-badges">
+      <span class="badge badge-enrol">
+        <svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        Limited Enrolment Open
+      </span>
+      <span class="badge badge-online">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        100% Online
+      </span>
+    </div>
+    <h1>Master <span>Data Analysis</span><br>From Scratch</h1>
+    <p class="header-sub">Hands-on, practical training that takes you from zero to job-ready — learn from anywhere</p>
+    <div class="meta-row">
+      <div class="meta-pill">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        2-Month Training
+      </div>
+      <div class="meta-pill">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Live Online Classes
+      </div>
+      <div class="meta-pill">
+        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Certificate Available
+      </div>
+    </div>
+  </div>
+
+  <!-- ONLINE BANNER -->
+  <div class="online-banner">
+    <div class="online-dots">
+      <div class="dot dot1"></div>
+      <div class="dot dot2"></div>
+      <div class="dot dot3"></div>
+    </div>
+    <p class="online-text"><strong>Classes are completely online</strong> — attend from the comfort of your home, anywhere in Nigeria or abroad. All you need is a device and internet connection.</p>
+  </div>
+
+  <!-- EARLY BIRD -->
+  <div class="early-bird">
+    <div class="early-bird-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    </div>
+    <div class="early-bird-text">
+      <strong>🎉 First 20 students get 10% off — don't miss it!</strong>
+      <span>Discount applies automatically at registration · Limited spots only</span>
+    </div>
+  </div>
+
+  <!-- PACKAGES -->
+  <div class="packages-section">
+    <p class="section-label">Training Packages</p>
+
+    <div class="packages-grid">
+      <div class="package-card featured">
+        <span class="duration-badge">2 months</span>
+        <span class="package-icon">📊</span>
+        <p class="package-name">Excel for Analysis</p>
+        <p class="package-tool">Pivot Tables · XLOOKUP · Dashboards</p>
+        <span class="price-original">₦55,556</span>
+        <span class="price-main">₦50,000</span>
+        <span class="price-note">Early bird: ₦45,000</span>
+      </div>
+
+      <div class="package-card featured">
+        <span class="duration-badge">2 months</span>
+        <span class="package-icon">🗄️</span>
+        <p class="package-name">SQL for Data</p>
+        <p class="package-tool">Queries · Joins · Aggregations</p>
+        <span class="price-original">₦55,556</span>
+        <span class="price-main">₦50,000</span>
+        <span class="price-note">Early bird: ₦45,000</span>
+      </div>
+
+      <div class="package-card featured">
+        <span class="duration-badge">2 months</span>
+        <span class="package-icon">📈</span>
+        <p class="package-name">Power BI</p>
+        <p class="package-tool">DAX · Reports · Visuals</p>
+        <span class="price-original">₦55,556</span>
+        <span class="price-main">₦50,000</span>
+        <span class="price-note">Early bird: ₦45,000</span>
+      </div>
+    </div>
+
+    <div class="packages-row2">
+      <div class="package-card featured">
+        <span class="duration-badge">2 months</span>
+        <span class="package-icon">🎨</span>
+        <p class="package-name">Tableau</p>
+        <p class="package-tool">Charts · Stories · Interactivity</p>
+        <span class="price-original">₦55,556</span>
+        <span class="price-main">₦50,000</span>
+        <span class="price-note">Early bird: ₦45,000</span>
+      </div>
+
+      <div class="package-card" style="border-color: #a5b4fc33; background: linear-gradient(145deg, #16103a, #0e0d28);">
+        <span class="duration-badge" style="background: #1e1a4a; color: #6a5aaa;">3 months</span>
+        <span class="package-icon">🐍</span>
+        <p class="package-name" style="color: #c4b8f0;">Python for Data</p>
+        <p class="package-tool">Pandas · NumPy · Matplotlib</p>
+        <span class="price-original" style="color: #3d3560;">₦111,112</span>
+        <span class="price-main python-price">₦100,000</span>
+        <span class="price-note" style="color: #4a3a80;">Early bird: ₦90,000 · Extended 3-month track</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATION -->
+  <div class="cert-section">
+    <div class="cert-icon-wrap">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+    </div>
+    <div class="cert-text">
+      <strong>Get Certified After Training</strong>
+      <span>Complete your course, pass the assessment, and earn an official<br>certificate of completion from Ibiso Bien Michael</span>
+    </div>
+    <div class="cert-price-tag">
+      <span class="amt">+ ₦10,000</span>
+      <span class="lbl">certification fee</span>
+    </div>
+  </div>
+
+  <!-- INSTRUCTOR -->
+  <div class="instructor-section">
+    <div class="instructor-avatar">IB</div>
+    <div class="instructor-info">
+      <strong>Ibiso Bien Michael</strong>
+      <span>Data Analyst &amp; Certified IT Professional · Port Harcourt, Nigeria</span>
+    </div>
+    <div class="instructor-creds">
+      <span class="cred-chip">CompTIA Data+</span>
+      <span class="cred-chip">City &amp; Guilds IT</span>
+      <span class="cred-chip">NCDMB</span>
+      <span class="cred-chip">B.Sc. Comp. Sci.</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <p class="cta-label">Click the link or scan to register now — spots are filling fast</p>
+    <a href="https://forms.gle/VvsWwR8paZpUhyw29" class="cta-button" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      Register Now — forms.gle/VvsWwR8paZpUhyw29
+    </a>
+    <p class="cta-url">https://forms.gle/VvsWwR8paZpUhyw29</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <span class="footer-name">Ibiso Bien Michael</span>
+    <div class="footer-contacts">
+      <span class="footer-contact-item">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        ibisobien@gmail.com
+      </span>
+      <span class="footer-contact-item">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +234 816 364 1496
+      </span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
